@@ -1,2 +1,2 @@
-# Codes_Estrutura_de_Dados
-Códigos das aulas de estruturas de dados...ou ao menos tentando fazê-los funcionar
+# Codes_Faculdade
+Códigos das aulas na faculdade, ou pelo menos tentando fazê-los.
