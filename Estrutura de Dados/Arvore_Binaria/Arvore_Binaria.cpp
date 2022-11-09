@@ -9,7 +9,7 @@ typedef struct no {
 	int numero;
 } No; //Fim da struct no
 
-//FunÁ„o *doisFilhos ()
+//Fun√ß√£o *doisFilhos ()
 no *doisFilhos (no *root) {
 	if (root == NULL)
 		return NULL;
@@ -27,7 +27,7 @@ void inserirNo (No **raiz, int num) {
 		aux->esquerda = NULL;
 		aux->direita = NULL;
 		*raiz = aux;
-		printf ("\n\nO n˙mero %d foi inserirdo com sucesso na ·rvore bin·ria!\n\n", num);
+		printf ("\n\nO n√∫mero %d foi inserirdo com sucesso na √°rvore bin√°ria!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
@@ -35,7 +35,7 @@ void inserirNo (No **raiz, int num) {
 	
 	if (num < (*raiz)->numero) { //esquerda
 		inserirNo(&(*raiz)->esquerda, num);
-		printf ("\n\nO n˙mero %d foi inserirdo com sucesso na ·rvore bin·ria!\n\n", num);
+		printf ("\n\nO n√∫mero %d foi inserirdo com sucesso na √°rvore bin√°ria!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
@@ -43,13 +43,13 @@ void inserirNo (No **raiz, int num) {
 	
 	if (num > (*raiz)->numero) { //direita
 		inserirNo(&(*raiz)->direita, num);
-		printf ("\n\nO n˙mero %d foi inserirdo com sucesso na ·rvore bin·ria!\n\n", num);
+		printf ("\n\nO n√∫mero %d foi inserirdo com sucesso na √°rvore bin√°ria!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
 	}
 	
-	printf ("\n\nO n˙mero %d j· foi inserido anteriormente na ·rvore bin·ria!\n\n");		
+	printf ("\n\nO n√∫mero %d j√° foi inserido anteriormente na √°rvore bin√°ria!\n\n");		
 } //Fim do procedimento inserirNo()
 
 //Procedimento removerNo()
@@ -61,9 +61,37 @@ void removerNo (no **raiz, int num) {
 		removerNo(&(*raiz)->direita, num);
 	}
 	else if ((*raiz)->esquerda != NULL && (*raiz)->direita != NULL) {
-		
+		no *auxiliar = NULL;
+		auxiliar = doisFilhos((*raiz)->direita);
+		(*raiz)->numero = auxiliar->numero;
+		removerNo(&(*raiz)->direita, (*raiz)->numero); 
+	}
+	else {
+		no *auxiliar = (*raiz);
+		if ((*raiz)->esquerda == NULL) {
+			(*raiz) = (*raiz)->direita;
+		}
+		else {
+			(*raiz) = (*raiz)->esquerda;
+		}
+		free (auxiliar);
+		system ("cls");
+		printf ("\n\nN√∫mero removido com sucesso!\n\n");
+		system ("Pause");
 	}
 } //Fim do procedimento removerNo()
+
+//Procedimento pesquisaOrdemSimetrica()
+//Pesquisando e imprimindo em ordem sim√©trica
+void pesquisaOrdemSimetrica(no *raiz) { //Suposi√ß√£o: usu√°rio encaminha raiz da √°rvore
+	if (raiz == NULL)
+		return;
+	pesquisaOrdemSimetrica(raiz->esquerda);
+	printf ("\n%d", raiz->numero);
+	pesquisaOrdemSimetrica(raiz->direita);
+} //Fim do procedimento pesquisaOrdemSimetrica()
+
+//Fun√ß√£o imprimirArvOrdemSimetrica()
 
 int main (int argc, char *argv[]) {
 	system ("cls");
@@ -73,4 +101,3 @@ int main (int argc, char *argv[]) {
 	system ("Pause");
 	return 0; 
 }
-
