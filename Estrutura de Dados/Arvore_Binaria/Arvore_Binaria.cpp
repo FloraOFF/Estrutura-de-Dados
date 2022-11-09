@@ -91,6 +91,26 @@ void pesquisaOrdemSimetrica(no *raiz) { //Suposição: usuário encaminha raiz d
 	pesquisaOrdemSimetrica(raiz->direita);
 } //Fim do procedimento pesquisaOrdemSimetrica()
 
+//Procedimento pesquisaPreOrdem()
+//Pesquisando e imprimindo em pré-ordem
+void pesquisaPreOrdem (no *raiz) {
+	if (raiz == NULL)
+		return;
+	printf ("\n%d", raiz->numero);
+	pesquisaPreOrdem(raiz->esquerda);
+	pesquisaPreOrdem(raiz->direita);
+} //Fim do procedimento pesquisaPreOrdem()
+
+//Procedimento pesquisaPosOrdem()
+//Pesquisando e imprimindo em pré-ordem
+void pesquisaPosOrdem (no *raiz) {
+	if (raiz == NULL)
+		return;
+	pesquisaPreOrdem(raiz->esquerda);
+	pesquisaPreOrdem(raiz->direita);
+	printf ("\n%d", raiz->numero);
+} //Fim do procedimento pesquisaPosOrdem()
+
 //Função imprimirArvOrdemSimetrica()
 
 int main (int argc, char *argv[]) {
@@ -101,3 +121,4 @@ int main (int argc, char *argv[]) {
 	system ("Pause");
 	return 0; 
 }
+
