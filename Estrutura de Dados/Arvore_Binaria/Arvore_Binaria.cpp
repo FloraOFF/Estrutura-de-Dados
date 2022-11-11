@@ -40,17 +40,11 @@ void inserirNo (No **raiz, int num) {
 	
 	if (num < (*raiz)->numero) { //esquerda
 		inserirNo(&(*raiz)->esquerda, num);
-		printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);
-		system ("Pause");
-		system ("cls");
 		return;
 	}
 	
 	if (num > (*raiz)->numero) { //direita
 		inserirNo(&(*raiz)->direita, num);
-		printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);
-		system ("Pause");
-		system ("cls");
 		return;
 	}
 	
@@ -118,6 +112,17 @@ void pesquisaPosOrdem (no *raiz) {
 
 //FunÃ§Ã£o imprimirArvOrdemSimetrica()
 
+/*
+//Procedimento buscaArvore()
+void buscaArvore (no **raiz, int num) {
+	if (num < (*raiz)->numero) {
+		buscaArvore(&(*raiz)->esquerda, num);	
+	}
+	else if (num > (*raiz)->numero) {
+		buscaArvore(&(*raiz)->direita, num);
+	}
+} //Fim do procedimento buscaArvore()
+*/
 
 int main (int argc, char *argv[]) {
 	system ("cls");
@@ -131,7 +136,8 @@ int main (int argc, char *argv[]) {
 	printf ("\n\n0 - Encerrar o programa");
 	printf ("\n\n1 - Inserir nó");
 	printf ("\n\n2 - Remover nó\n\n");
-	//printf ("\n\n3 - Pesquisa na árvore binária\n\n");
+	printf ("\n\n3 - Pesquisa na árvore binária");
+	printf ("\n\n4 - Busca na árvore binária\n\n");
 	printf ("\n\nInforme a opção desejada: ");
 	scanf ("%d", &op);
 	
@@ -159,8 +165,40 @@ int main (int argc, char *argv[]) {
 			break;
 			
 		case 3: 
-			printf("\n\nMENU\n\n");
-			printf ("")
+			printf("\n\nMENU IMPRIMR\n\n");
+			printf ("\n\n1 - Imprimir em Ordem Simétrica");
+			printf ("\n\n2 - Imprimir em Pré Ordem");
+			printf ("\n\n3 - Imprimir em Pós Ordem\n\n");
+			printf ("\n\nInforme a opção desejada: ");
+			scanf ("%d", &op1);
+			
+			printf ("\n\n");
+			system ("Pause");
+			system ("cls");
+			
+			switch (op1) {
+				case 1:
+					printf ("\n\nImprimindo em Ordem Simétrica!\n\n");
+					pesquisaOrdemSimetrica(no);
+					printf ("\n\n");
+					system ("Pause");
+					system ("cls");				
+					break;
+				case 2:
+					printf ("\n\nImprimindo em Pré Ordem");
+					pesquisaPreOrdem (no);	
+					printf ("\n\n");
+					system ("Pause");
+					system ("cls");	
+					break;
+				case 3: 
+					printf ("\n\nImprimindo em Pós Ordem");
+					pesquisaPosOrdem (no);
+					printf ("\n\n");
+					system ("Pause");
+					system ("cls");
+					break;														
+			}
 			break;
 			
 		default:
