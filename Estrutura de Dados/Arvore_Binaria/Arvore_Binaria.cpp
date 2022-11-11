@@ -9,7 +9,7 @@ typedef struct no {
 	int numero;
 } No; //Fim da struct no
 
-//Função *doisFilhos ()
+//FunÃ§Ã£o *doisFilhos ()
 no *doisFilhos (no *root) {
 	if (root == NULL)
 		return NULL;
@@ -19,6 +19,11 @@ no *doisFilhos (no *root) {
 		return root->esquerda;
 } //Fim *doisFilhos()
 
+//Função *criarNo()
+No *criarNo () {
+	return NULL;
+} //Fim da Função *criarNo()
+
 //Procedimento inserirNo ()
 void inserirNo (No **raiz, int num) {
 	if (*raiz == NULL) {
@@ -27,7 +32,7 @@ void inserirNo (No **raiz, int num) {
 		aux->esquerda = NULL;
 		aux->direita = NULL;
 		*raiz = aux;
-		printf ("\n\nO número %d foi inserirdo com sucesso na árvore binária!\n\n", num);
+		printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
@@ -35,7 +40,7 @@ void inserirNo (No **raiz, int num) {
 	
 	if (num < (*raiz)->numero) { //esquerda
 		inserirNo(&(*raiz)->esquerda, num);
-		printf ("\n\nO número %d foi inserirdo com sucesso na árvore binária!\n\n", num);
+		printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
@@ -43,13 +48,13 @@ void inserirNo (No **raiz, int num) {
 	
 	if (num > (*raiz)->numero) { //direita
 		inserirNo(&(*raiz)->direita, num);
-		printf ("\n\nO número %d foi inserirdo com sucesso na árvore binária!\n\n", num);
+		printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);
 		system ("Pause");
 		system ("cls");
 		return;
 	}
 	
-	printf ("\n\nO número %d já foi inserido anteriormente na árvore binária!\n\n");		
+	printf ("\n\nO número %d já foi inserido anteriormente na Árvore Binária!\n\n", num);		
 } //Fim do procedimento inserirNo()
 
 //Procedimento removerNo()
@@ -82,8 +87,8 @@ void removerNo (no **raiz, int num) {
 } //Fim do procedimento removerNo()
 
 //Procedimento pesquisaOrdemSimetrica()
-//Pesquisando e imprimindo em ordem simétrica
-void pesquisaOrdemSimetrica(no *raiz) { //Suposição: usuário encaminha raiz da árvore
+//Pesquisando e imprimindo em ordem simÃ©trica
+void pesquisaOrdemSimetrica(no *raiz) { //SuposiÃ§Ã£o: usuÃ¡rio encaminha raiz da Ã¡rvore
 	if (raiz == NULL)
 		return;
 	pesquisaOrdemSimetrica(raiz->esquerda);
@@ -92,7 +97,7 @@ void pesquisaOrdemSimetrica(no *raiz) { //Suposição: usuário encaminha raiz d
 } //Fim do procedimento pesquisaOrdemSimetrica()
 
 //Procedimento pesquisaPreOrdem()
-//Pesquisando e imprimindo em pré-ordem
+//Pesquisando e imprimindo em prÃ©-ordem
 void pesquisaPreOrdem (no *raiz) {
 	if (raiz == NULL)
 		return;
@@ -102,7 +107,7 @@ void pesquisaPreOrdem (no *raiz) {
 } //Fim do procedimento pesquisaPreOrdem()
 
 //Procedimento pesquisaPosOrdem()
-//Pesquisando e imprimindo em pré-ordem
+//Pesquisando e imprimindo em prÃ©-ordem
 void pesquisaPosOrdem (no *raiz) {
 	if (raiz == NULL)
 		return;
@@ -111,14 +116,59 @@ void pesquisaPosOrdem (no *raiz) {
 	printf ("\n%d", raiz->numero);
 } //Fim do procedimento pesquisaPosOrdem()
 
-//Função imprimirArvOrdemSimetrica()
+//FunÃ§Ã£o imprimirArvOrdemSimetrica()
+
 
 int main (int argc, char *argv[]) {
 	system ("cls");
 	setlocale (LC_ALL, "Portuguese");
-	
-	printf ("\n\nObrigado por utilizar nosso programa!\n\n");
-	system ("Pause");
-	return 0; 
-}
+	int op, op1, valor;
+	No *no = criarNo();
 
+	while (1){
+	printf ("\n\nEste programa manipula uma árvore binária!\n\n");
+	printf ("\n\nMENU\n\n");
+	printf ("\n\n0 - Encerrar o programa");
+	printf ("\n\n1 - Inserir nó");
+	printf ("\n\n2 - Remover nó\n\n");
+	//printf ("\n\n3 - Pesquisa na árvore binária\n\n");
+	printf ("\n\nInforme a opção desejada: ");
+	scanf ("%d", &op);
+	
+	printf ("\n\n");
+	system ("Pause");
+	system ("cls");
+	
+	switch (op) {
+		case 1:
+			printf ("\n\nInforme um número a ser inserido na árvore binária: ");
+			scanf ("%d", &valor);
+			inserirNo (&no, valor);
+			printf ("\n\n");
+			system ("Pause");
+			system ("cls");
+			break;
+		
+		case 2:
+			printf ("\n\nInforme qual o número que deseja ser removido: ");
+			scanf ("%d", &valor);
+			removerNo (&no, valor);
+			printf ("\n\n");
+			system ("Pause");
+			system ("cls");
+			break;
+			
+		case 3: 
+			printf("\n\nMENU\n\n");
+			printf ("")
+			break;
+			
+		default:
+			system ("cls");
+			printf ("\n\nObrigado por utilizar nosso programa!\n\n");
+			system ("Pause");
+			exit(0);
+	}
+}
+	return 0;
+}
